@@ -1,8 +1,9 @@
 class Movie {
-    constructor (inputTitle, inputActor = "Not Specified", inputDirector = "Not Specified") {
+    constructor (inputTitle, inputActor = "Not Specified", inputDirector = "Not Specified", inputRating = "unspecified") {
         this.title = inputTitle;
         this.actor = inputActor;
         this.director = inputDirector;
+        this.rating = inputRating;
     };
     
     async create (movieCollection) {
