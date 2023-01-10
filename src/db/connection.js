@@ -6,7 +6,7 @@ const client = new MongoClient(process.env.MONGO_URI);
 async function connect() {
     try {
         await client.connect();
-        const db = client.db(cnMongoCLI);
+        const db = client.db("cnMongoCLI");
         return db.collection("Movie");
     } catch (error) {
         console.log(error);
