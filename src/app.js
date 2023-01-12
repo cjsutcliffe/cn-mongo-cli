@@ -17,15 +17,23 @@ async function app(yargsObject) {
         const query = { title: yargsObject.title };
         const replacement = { title: yargsObject.title, actor: yargsObject.actor, director: yargsObject.director, rating: yargsObject.rating}
         const result = await movieCollection.replaceOne(query, replacement);
+        //console.log(result);
+        if (result.modifiedCount === 1) {
+            console.log ("Updated successfully");
+        } else {
+            console.log("update unsuccessful");
+        }
 
     } else if(yargsObject.update) {
         // code to update the actor or director in a movie https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne/
         console.log("Entering update");
         const query = {title: yargsObject.title};
         //updates actor, director and rating - if a yarg is not defined updates, to null...
+        //could spilt this out into seperate functions for each element
+        //https://www.mongodb.com/docs/manual/reference/operator/update/set/
         const update ={$set: { actor: yargsObject.actor, director: yargsObject.director, rating: yargsObject.rating}};
         const result = await movieCollection.updateOne(query, update);
-        console.log(result);
+        //console.log(result);
         if (result.modifiedCount === 1) {
             console.log ("Updated successfully");
         } else {
